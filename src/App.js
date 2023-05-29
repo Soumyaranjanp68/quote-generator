@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+// src/App.js
+import React, { useState } from 'react';
+import quotes from './quotes';
 import './App.css';
 
 function App() {
+  const [quote, setQuote] = useState('');
+
+  const generateRandomQuote = () => {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    setQuote(quotes[randomIndex]);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="content">
+        <h1>Random Quote Generator</h1>
+        <p>{quote}</p>
+        <button onClick={generateRandomQuote}>Generate Quote</button>
+      </div>
     </div>
   );
 }
